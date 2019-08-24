@@ -1,6 +1,7 @@
 # os-project  
 ## commit内容  
 * 参考书中11.1，即示例代码chapter11/a，实现除从硬盘引导外的功能  
+* 根目录下应有一个80m.img，为80M的镜像，由于过大，未上传，可从实例代码中找到80m.img.gz解压获得  
 ## 注意事项  
 * 测试环境ubuntu64位，需安装bochs，bxiamge，nasm，gcc    
 * bochrsc最后一行已改为keyboard: keymap=/usr/local/share/bochs/keymaps/x11-pc-us.map，若出现问题请查找类似目录下该文件存放位置  
