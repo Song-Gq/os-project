@@ -194,6 +194,8 @@ PRIVATE void hd_rdwt(MESSAGE * p)
 	int bytes_left = p->CNT;
 	void * la = (void*)va2la(p->PROC_NR, p->BUF);
 
+	printl("...........................\n");
+
 	while (bytes_left) {
 		int bytes = min(SECTOR_SIZE, bytes_left);
 		if (p->type == DEV_READ) {

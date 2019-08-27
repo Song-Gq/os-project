@@ -1,5 +1,6 @@
 # os-project  
 ## commit内容  
+* 这是使用32位ubuntu生成的版本，可正常运行安装的应用程序，如echo。已写入镜像，直接输入bochs回车即可。bochsrc有相应修改。80m.img不再被ignore。  
 * 修复了fork()的错误，涉及文件mm/forkexit.c  
 * 参考书中11.1，即示例代码chapter11/a，实现除从硬盘引导外的功能  
 * 根目录下应有一个80m.img，为80M的镜像，由于过大，未上传，可从实例代码中找到80m.img.gz解压获得  
