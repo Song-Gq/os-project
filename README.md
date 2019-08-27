@@ -16,4 +16,3 @@
 * （可跳过）若想安装应用，cd command，make install，cd ..  
 * 输入bochs回车  
 * 可以使用alt加F1，F2等切换窗口（确保系统的这些快捷键未被使用）  
-
