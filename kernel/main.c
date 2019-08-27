@@ -296,10 +296,12 @@ void shabby_shell(const char * tty_name)
 			close(fd);
 			int pid = fork();
 			if (pid != 0) { /* parent */
+				//write(1, "{", 1);
 				int s;
 				wait(&s);
 			}
 			else {	/* child */
+				//write(1, "}", 1);
 				execv(argv[0], argv);
 			}
 		}
