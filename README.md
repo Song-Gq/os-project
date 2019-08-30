@@ -1,4 +1,6 @@
 # os-project  
+**该分支不再使用**  
+**由于64位系统下应用运行有问题，故转移到song-32bit分支**  
 ## commit内容  
 * 可安装应用，但无法运行，难以解决，shell中使用echo，pwd，ls将导致错误  
 * 在mm/forkexit.c进行修改，使fork能够运行  
