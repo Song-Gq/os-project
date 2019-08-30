@@ -9,7 +9,7 @@ int main(int argc, char * argv[])
 	i = list("\\", bufr);
 
 	if(i != 0) {
-		printf("Something wrong!");
+		printf("ls: Something wrong!");
 		return -1;
 	}
 

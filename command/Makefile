@@ -12,7 +12,7 @@ CFLAGS		= -m32 -I ../include/ -c -fno-builtin -fno-stack-protector -Wall
 LDFLAGS		= -m elf_i386 -Ttext 0x1000
 DASMFLAGS	= -D
 LIB		= ../lib/orangescrt.a
-BIN		= echo pwd ls mkfile cat
+BIN		= echo ls mkfile show edit help rm pwd
 
 # All Phony Targets
 .PHONY : everything final clean realclean disasm all install
@@ -66,10 +66,27 @@ mkfile.o: mkfile.c ../include/stdio.h ../include/sys/fs.h
 mkfile : mkfile.o start.o $(LIB)
 	$(LD) $(LDFLAGS) -o $@ $?
 
-cat.o: cat.c ../include/stdio.h ../include/sys/fs.h
+show.o: show.c ../include/stdio.h ../include/sys/fs.h
 	$(CC) $(CFLAGS) -o $@ $<
 
-cat : cat.o start.o $(LIB)
+show : show.o start.o $(LIB)
 	$(LD) $(LDFLAGS) -o $@ $?
 
+edit.o: edit.c ../include/stdio.h ../include/sys/fs.h
+	$(CC) $(CFLAGS) -o $@ $<
+
+edit : edit.o start.o $(LIB)
+	$(LD) $(LDFLAGS) -o $@ $?
+
+help.o: help.c ../include/stdio.h ../include/sys/fs.h
+	$(CC) $(CFLAGS) -o $@ $<
+
+help : help.o start.o $(LIB)
+	$(LD) $(LDFLAGS) -o $@ $?
+
+rm.o: rm.c ../include/stdio.h ../include/sys/fs.h
+	$(CC) $(CFLAGS) -o $@ $<
+
+rm : rm.o start.o $(LIB)
+	$(LD) $(LDFLAGS) -o $@ $?
 

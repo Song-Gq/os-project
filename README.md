@@ -1,5 +1,6 @@
 # os-project  
 ## commit内容 
+* 增加一些提示和指令help，rm等  
 * 增加mkfile，cat（显示文件内容）   
 * 增加了ls指令。可以使用Ctrl+F1，F2切换窗口了  
 * 这是使用32位ubuntu生成的版本，可正常运行安装的应用程序，如echo。已写入镜像，在64位下如无更改，直接输入bochs回车即可。bochsrc有相应修改。80m.img不再被ignore。  

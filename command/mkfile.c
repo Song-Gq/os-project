@@ -15,7 +15,7 @@ int main(int argc, char * argv[])
 		printf("mkfile: %s already exists.\nAborting.\n", argv[1]);
 		return 0;
 	}
-	printf("File created: %s (fd %d)\n", argv[1], fd);
+	printf("mkfile: %s created. (fd %d)\n", argv[1], fd);
 
 	close(fd);
 
