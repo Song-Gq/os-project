@@ -8,11 +8,11 @@ DASM		= objdump
 CC		= gcc
 LD		= ld
 ASMFLAGS	= -I ../include/ -f elf
-CFLAGS		= -I ../include/ -c -fno-builtin -fno-stack-protector -Wall
-LDFLAGS		= -Ttext 0x1000
+CFLAGS		= -m32 -I ../include/ -c -fno-builtin -fno-stack-protector -Wall
+LDFLAGS		= -m elf_i386 -Ttext 0x1000
 DASMFLAGS	= -D
 LIB		= ../lib/orangescrt.a
-BIN		= echo pwd
+BIN		= echo pwd ls
 
 # All Phony Targets
 .PHONY : everything final clean realclean disasm all install
@@ -53,3 +53,10 @@ pwd.o: pwd.c ../include/type.h ../include/stdio.h
 
 pwd : pwd.o start.o $(LIB)
 	$(LD) $(LDFLAGS) -o $@ $?
+
+ls.o: ls.c  ../include/stdio.h
+	$(CC) $(CFLAGS) -o $@ $<
+
+ls : ls.o start.o $(LIB)
+	$(LD) $(LDFLAGS) -o $@ $?
+
