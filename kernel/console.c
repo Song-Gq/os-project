@@ -62,7 +62,11 @@ PUBLIC void init_screen(TTY* tty)
 		/* 
 		 * `?' in this string will be replaced with 0, 1, 2, ...
 		 */
-		const char prompt[] = "[TTY #?]\n";
+		const char prompt[] = "[TTY #?]\n"
+			"Type \"help\" and Enter to get instructions\n"
+			"Press Ctrl/Alt + F1/F2/F3 to alternate"
+			" between consoles\n"
+			"Press Shift + up/down to scroll\n";
 
 		const char * p = prompt;
 		for (; *p; p++)

@@ -154,7 +154,6 @@ PRIVATE void hd_close(int device)
 	hd_info[drive].open_cnt--;
 }
 
-
 /*****************************************************************************
  *                                hd_rdwt
  *****************************************************************************/
@@ -193,6 +192,8 @@ PRIVATE void hd_rdwt(MESSAGE * p)
 
 	int bytes_left = p->CNT;
 	void * la = (void*)va2la(p->PROC_NR, p->BUF);
+
+	printl("...........................\n");
 
 	while (bytes_left) {
 		int bytes = min(SECTOR_SIZE, bytes_left);
@@ -525,3 +526,4 @@ PUBLIC void hd_handler(int irq)
 
 	inform_int(TASK_HD);
 }
+

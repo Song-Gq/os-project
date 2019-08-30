@@ -310,6 +310,30 @@ void shabby_shell(const char * tty_name)
 }
 
 /*****************************************************************************
+ *                                clear_screen
+ *****************************************************************************/
+void clear_screen() {
+	int i = 0;
+	disp_pos = 0;
+	for(i=0;i<console_table[current_console].cursor;i++){
+		disp_str(" ");
+	}
+	disp_pos = 0;
+
+	console_table[current_console].crtc_start = 0;
+	console_table[current_console].cursor = 0;
+}
+
+/*****************************************************************************
+ *                                show_welcome
+ *****************************************************************************/
+void show_welcome() {
+	clear_screen();
+	printf("Based on Orange's OS\n"
+		"Press Ctrl/Alt + F1/F2/F3 to alternate between consoles\n");
+}
+
+/*****************************************************************************
  *                                Init
  *****************************************************************************/
 /**
@@ -339,13 +363,19 @@ void Init()
 		}
 		else {	/* child process */
 			printf("[child is running, pid:%d]\n", getpid());
+
+			show_welcome();
+
 			close(fd_stdin);
 			close(fd_stdout);
-			
+
 			shabby_shell(tty_list[i]);
 			assert(0);
 		}
 	}
+
+	clear_screen();
+	//show_welcome();
 
 	while (1) {
 		int s;
@@ -355,7 +385,6 @@ void Init()
 
 	assert(0);
 }
-
 
 /*======================================================================*
                                TestA
