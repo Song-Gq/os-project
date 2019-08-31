@@ -102,4 +102,9 @@ game : game.o start.o $(LIB)
 #mkdir : mkdir.o start.o $(LIB)
 #	$(LD) $(LDFLAGS) -o $@ $?
 
+process.o: process.c ../include/stdio.h ../include/sys/fs.h
+	$(CC) $(CFLAGS) -o $@ $<
+
+process : process.o start.o $(LIB)
+	$(LD) $(LDFLAGS) -o $@ $?
 
