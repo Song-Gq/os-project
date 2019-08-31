@@ -284,6 +284,11 @@ void shabby_shell(const char * tty_name)
 		} while(ch);
 		argv[argc] = 0;
 
+		if(strcmp(argv[0], "process") == 0) {
+			processInfo();
+			continue;
+		}
+
 		int fd = open(argv[0], O_RDWR);
 		if (fd == -1) {
 			if (rdbuf[0]) {
@@ -428,4 +433,27 @@ PUBLIC void panic(const char *fmt, ...)
 	/* should never arrive here */
 	__asm__ __volatile__("ud2");
 }
+
+/*****************************************************************************
+ *                             process info
+ *****************************************************************************/
+PUBLIC int processInfo()
+{
+    struct proc * p = proc_table;
+    int i;
+    printf("The details of all the processes are as follows:\n");
+    printf("===================== System Task ====================\n");
+    for (i = 0; i < NR_TASKS; i++,p++) {
+		/* TASK */                       
+        printf("pid: %d  |  Name: %s  |  Priority: %d \n", i, p->name, p->priority);
+    }
+    printf("===================== User Process ====================\n");      
+    for (; i < NR_TASKS +/* NR_PROCS*/NR_NATIVE_PROCS; i++,p++) {
+		 /* USER PROC */
+        printf("pid %d  |  Name: %s  |  Priority: %d  |  Running Status: %d\n", i, p->name, p->priority, p->p_flags);
+            
+    }
+    return 0;
+}
+
 
